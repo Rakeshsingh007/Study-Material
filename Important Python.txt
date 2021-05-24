@@ -129,7 +129,7 @@ new, init, magic fun
 ** class variable can be access and modified using insance as well but it will create same variable in instance namespace ==> refer corey video 2
 ** class method can be called from instance as well and method will be applied to not only that instance but all instance of that class because we are using cls keyword in method ==> refer corey video 3
 -------------------------------------------------------------------------------
-							      
+							      Others
 ------------------------------------------------------------------------------- 
 enumerate,zip,iteritem,items,sorted,reversed,join,split
 __name__ variable and used cases
@@ -137,6 +137,9 @@ args and kwargs and packing unpacking of arguments
 Difference between ==,isintance and is operator in Python
 deepcopy,shallow copy and object assignment(=) refer this https://stackoverflow.com/questions/17246693/what-is-the-difference-between-shallow-copy-deepcopy-and-normal-assignment-oper
 
+-------------------------------------------------------------------------------
+							 Most important
+------------------------------------------------------------------------------- 
 lambda filter map reduce
 iterator
 generator
@@ -145,7 +148,9 @@ yield keyword
 Partial function
 first class function
 Decorator
-
+-------------------------------------------------------------------------------
+							 Modules and Packages 
+------------------------------------------------------------------------------- 
 Diffrence between modules and packages
 randint() and randrange() and range module
 Python OS ,sys module,Copy module 
@@ -154,36 +159,71 @@ how to get list of directory ---> os.listdir()
 mkdir command  ---> os.mkdir() 
 rename file  ---> os.rename('old.txt','New.txt')
 
+-------------------------------------------------------------------------------
+							 Exception Handling  
+------------------------------------------------------------------------------- 
 Exception Handling
 Exceptions in Python and custom exception
 TypeError,ValueError,IndexError 
 
-File Handling
-readable
-read
-readline
-readlines
+-------------------------------------------------------------------------------
+							 File Handling  
+------------------------------------------------------------------------------- 
 
-writable
-write
-writelines
+buffer
+close -- Close the file
+closed -- True/False based on file open/close
+encoding -- encodeing  
+flush -- will flush the file obj(i.e will not able to read again from same obj again, need to create new object)  
+mode  --- in which mode file is opened
+name -- name of file 
 
-name
+readable -- True/False based on file can be read or not
+read -- read(n) read and return string till the end of file, if argument passed then will read that many characters
+readline -- readline(n) read and return string till the end of line, if argument passed then will read that many characters
+readlines --- readlines(n) read and return list of  string till the end of line, if argument passed of bytes returned exceed the hint number, no more lines will be returned.
 
-close
-closed
+seek -- seek(int,whence = 0) -> int ==> Move the cursor to the given position and whence is optional and defaults to 0 which means absolute file positioning, other values are 1 which means seek relative to the current position and 2 means seek relative to the file's end.
+seekable -- The seekable() method returns True if the file is seekable, False if not
+tell -- tell() method returns current position of file object.
+truncate -- The truncate() method resizes the file to the given number of bytes. If the size is not specified, the current position will be used.
 
-seekable
-seek
+writable -- True/False based on file can be write or not
+write -- write(str) -> int ==>  Takes str and write into file and return how many character write into file
+writelines -- writelines(iterable) ==>  Takes iterable and write into file and return None
 
-tell
+1	r     Opens a file for reading only in text format. The file pointer is placed at the beginning of the file. This is the default mode.
+2	rb    Opens a file for reading only in binary format. The file pointer is placed at the beginning of the file. This is the default mode.
+3	r+    Opens a file for both reading and writing in text format. The file pointer placed at the beginning of the file.
+4	rb+   Opens a file for both reading and writing in binary format. The file pointer placed at the beginning of the file.
+5	w     Opens a file for writing only in text format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+6	wb    Opens a file for writing only in binary format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+7	w+    Opens a file for both writing and reading in text format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+8	wb+   Opens a file for both writing and reading in binary format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+9	a     Opens a file for appending in text format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+10	ab    Opens a file for appending in binary format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+11	a+    Opens a file for both appending and reading in text format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+12	ab+   Opens a file for both appending and reading in binary format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
 
-truncate
+Custom Context Manager:
+
+	class my_file_reader():
+		def __init__(self, file_path):
+			self.__path = file_path
+			self.__file_object = None
+
+		def __enter__(self):
+			self.__file_object = open(self.__path)
+			return self
+
+		def __exit__(self, type, val, tb):
+			self.__file_object.close()
 -------------------------------------------------------------------------------
 							  Python Collections   
 ------------------------------------------------------------------------------- 
 Counters
 OrderedDict
+TypedDict
 Defaultdict
 ChainMap
 NamedTuple
@@ -192,18 +232,6 @@ Heap
 Collections.UserDict
 Collections.UserList
 Collections.UserString
--------------------------------------------------------------------------------
-							  DATA STRUCTURE    
-------------------------------------------------------------------------------- 
-Linear Search 
-Binary Search
-
-Bubble Sort
-Selection Sort
-Insertion Sort
-Merge sort
-Heap Sort
-Quick Sort
 
 -------------------------------------------------------------------------------
 							  REGULAR EXPRESSION  
