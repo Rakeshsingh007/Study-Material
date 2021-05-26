@@ -101,7 +101,12 @@ popitem()                    		The popitem() doesn't take any parameters,returns
 setdefault()                    	check for key in dictionary and if not there then will update the dictionary with that kay and provided value(default=None).
 
 #Sort a Python dictionary by key
+	1:
 	sorted(x.items(), key=lambda kv: kv[0])
+	2:
+	from collections import OrderedDict
+	dict = {'ravi':'10','rajnish':'9','sanjeev':'15','yash':'2','suraj':'32'}
+	dict1 = OrderedDict(sorted(dict.items()))
 
 #Sort a Python dictionary by Value
 	sorted_x = sorted(x.items(), key=lambda kv: kv[1])
@@ -131,12 +136,36 @@ new, init, magic fun
 -------------------------------------------------------------------------------
 							      Others
 ------------------------------------------------------------------------------- 
-enumerate,zip,iteritem,items,sorted,reversed,join,split
+enumerate,zip,sorted,reversed,join,split
 __name__ variable and used cases
 args and kwargs and packing unpacking of arguments
-Difference between ==,isintance and is operator in Python
-deepcopy,shallow copy and object assignment(=) refer this https://stackoverflow.com/questions/17246693/what-is-the-difference-between-shallow-copy-deepcopy-and-normal-assignment-oper
 
+deepcopy,shallow copy and object assignment(=) refer this https://stackoverflow.com/questions/17246693/what-is-the-difference-between-shallow-copy-deepcopy-and-normal-assignment-oper
+	A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original.
+	A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original.
+	Example:
+		import copy
+
+		a = [1, 2, 3]
+		b = [4, 5, 6]
+		c = [a, b]
+
+		d = c
+
+		print(id(c) == id(d))         # True - d is the same object as c
+		print(id(c[0]) == id(d[0]))   # True - d[0] is the same object as c[0]
+
+		d = copy.copy(c)
+
+		print(id(c) == id(d))         # False - d is now a new object
+		print(id(c[0]) == id(d[0]))   # True - d[0] is the same object as c[0]
+
+		d = copy.deepcopy(c)
+
+		print(id(c) == id(d))         # False - d is now a new object
+		print(id(c[0]) == id(d[0]))   # False - d[0] is now a new object
+
+Difference between ==,isintance and is operator in Python ==> The “==” operator compares the value or equality of two objects, whereas the Python “is” operator checks whether two variables point to the same object in memory.
 -------------------------------------------------------------------------------
 							 Most important
 ------------------------------------------------------------------------------- 
@@ -147,25 +176,37 @@ x = (x for x in range(4)) #generator comprehension
 yield keyword
 Partial function
 first class function
+Clousers
 Decorator
 -------------------------------------------------------------------------------
 							 Modules and Packages 
 ------------------------------------------------------------------------------- 
 Diffrence between modules and packages
 randint() and randrange() and range module
-Python OS ,sys module,Copy module 
-how to find current working directory   ---> os.getcwd()
-how to get list of directory ---> os.listdir()
-mkdir command  ---> os.mkdir() 
-rename file  ---> os.rename('old.txt','New.txt')
+OS ,sys module
+	how to find current working directory   ---> os.getcwd()
+	how to get list of directory ---> os.listdir()
+	mkdir command  ---> os.mkdir() 
+	rename file  ---> os.rename('old.txt','New.txt')
 
 -------------------------------------------------------------------------------
 							 Exception Handling  
 ------------------------------------------------------------------------------- 
+Error vs Exception
 Exception Handling
-Exceptions in Python and custom exception
-TypeError,ValueError,IndexError 
+custom exception:
+	class MyException(Exception):
+		def __int__(self,value)
+			self.value = value
+		def __str__(self):
+			return self.value
 
+	try:
+		raise (MyException("this is messagge"))
+
+	except MyException as error:
+		print(error.args[0])
+		
 -------------------------------------------------------------------------------
 							 File Handling  
 ------------------------------------------------------------------------------- 
