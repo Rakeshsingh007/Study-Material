@@ -182,12 +182,21 @@ Decorator
 							 Modules and Packages 
 ------------------------------------------------------------------------------- 
 Diffrence between modules and packages
-randint() and randrange() and range module
-OS ,sys module
-	how to find current working directory   ---> os.getcwd()
-	how to get list of directory ---> os.listdir()
-	mkdir command  ---> os.mkdir() 
-	rename file  ---> os.rename('old.txt','New.txt')
+'__all__' in __init__.py while packages initilization
+
+OS Module:
+	Current working directory   ---> os.getcwd()
+	Lising of file in directory ---> os.listdir()
+	Make directory --> os.mkdir(path) ==> create a directory named path with the specified numeric mode. This method raise FileExistsError if the directory already exists.
+	Make directory recursively --> os.mkdir(path) ==> while making leaf directory if any intermediate-level directory is missing, will create them all
+	Rename file  ---> os.rename('old.txt','New.txt')
+	Delete a file --> os.remove(path) ==> remove or delete a file path. This method can not remove or delete a directory
+    Delete a empty directory --> os.rmdir(path) ==> remove or delete a empty directory
+	Path checking --> os.path.exists(path) ==> check whether a file exists or not 
+	Size of file --> os.path.getsize(path) ==> size of file
+
+Request Module:
+	
 
 -------------------------------------------------------------------------------
 							 Exception Handling  
