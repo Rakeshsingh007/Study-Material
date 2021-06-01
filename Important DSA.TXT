@@ -1,3 +1,7 @@
+-----------------------------------------------------------------------------------
+								BinarySearch
+-----------------------------------------------------------------------------------
+
 def BinarySearch(list,ele):
    lower = 0
    upper = len(list)-1
@@ -22,6 +26,7 @@ Average case for a random array: Θ(log n)
 -----------------------------------------------------------------------------------
 								InsertionSort
 -----------------------------------------------------------------------------------
+
 def InsertionSort(list):
     for index in range(1,len(list)):
         while list[index]<list[index-1] and index>0:
@@ -35,7 +40,6 @@ Worst case: Θ(n2).
 Best case: Θ(n).
 Average case for a random array: Θ(n2)
 "Almost sorted" case: Θ(n).
-
 
 -----------------------------------------------------------------------------------
 								BubbleSort
@@ -68,161 +72,120 @@ def SelectionSort(list):
 	return list
 print(SelectionSort([1,2,4,1,3,5,32,3,4,2]))
 
-
-class Queue:
-    def __init__(self):
-        from collections import deque
-        self.queue= deque([])
-    def pop(self):
-        if len(self.queue)>0:
-            self.queue.popleft()
-        else:
-            print("Queue is empty")
-    def push(self,element):
-        self.queue.append(element)
-    def view(self):
-        print(self.queue)
-
-queue = Queue()
-queue.pop()
-queue.push(34)
-queue.view()
-
-
-
-
-
-
+-----------------------------------------------------------------------------------
+								Stack
+-----------------------------------------------------------------------------------
 
 class Stack:
-	def __init__(self):
-		self.stack=[]
+    def __init__(self):
+        self.__stack = deque()
 
-	def push(self,ele):
-		self.stack.append(ele)
+    def push(self, item):
+        self.__stack.append(item)
 
-	def pop(self):
-		if len(self.stack)>0:
-			self.stack.pop()
-		else:
-			print("Can not pop empty list")
-	def view(self):
-		print(self.stack)
+    def pop(self):
+        if len(self.__stack) > 0:
+            return self.__stack.pop()
+        else:
+            return "queue is empty!!!!"
 
-s = Stack()
+    def show(self):
+        for item in self.__stack:
+            print(item, end="-->")
 
+    def __str__(self):
+        return "this is queue"
 
+-----------------------------------------------------------------------------------
+								Queue
+-----------------------------------------------------------------------------------
 
 class Queue:
-	def __init__(self):
-		self.queue=[]
+    def __init__(self):
+        self.__queue = deque()
 
-	def push(self,ele):
-		self.queue.append(ele)
+    def push(self, item):
+        self.__queue.appendleft(item)
 
-	def pop(self):
-		if len(self.queue)>0:
-			self.queue.pop(0)
-		else:
-			print("Queue is empty")
-	def view(self):
-		print(self.queue)
+    def pop(self):
+        if len(self.__queue) > 0:
+            return self.__queue.pop()
+        else:
+            return "queue is empty!!!!"
 
-s = Queue()
-s.push(2)
-s.push(3)
-s.push(4)
-s.push(5)
-s.push(6)
-s.view()
-s.pop()
-s.view()
-s.pop()
-s.view()
+    def show(self):
+        for item in self.__queue:
+            print(item, end="-->")
 
+    def __str__(self):
+        return "this is queue"
+
+-----------------------------------------------------------------------------------
+								LinkedList
+-----------------------------------------------------------------------------------
 
 class Node:
-	def __init__(self,data):
-		self.data = data
-		self.next = None
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
 
 class LinkedList:
     def __init__(self):
-        self.start=None
-    def insertlast(self,element):
-       newNode = Node(element)
-       if self.start==None:
-        self.start=newNode
-       else:
-        temp = self.start
-        while temp.next!=None:
-            temp = temp.next
-        temp.next=newNode
-    def deletefirst(self):
-        if self.start==None:
-            print("Linkrd list is empty so can not delete")
-        else:
-           temp = self.start
-           self.start=self.start.next
-    def view(self):
-        if self.start==None:
-           print("Linked list is empty")
-        else:
-           temp = self.start
-           while temp!=None:
-             print(temp.data,end=" ")
-             temp=temp.next
+        self.head = None
 
-mylist = LinkedList()
-mylist.view()
-mylist.deletefirst()
-mylist.insertlast(45)
-mylist.insertlast(45)
-mylist.insertlast(45)
-mylist.view()
-
-
-class Node:
-	def __init__(self,data):
-		self.data = data
-		self.next = None
-
-class LinkedList:
-    def __init__(self):
-        self.start=None
-    def insertlast(self):
-       element= int(input("please enter no "))
-       newNode = Node(element)
-       if self.start==None:
-        self.start=newNode
-       else:
-        temp = self.start
-        while temp.next!=None:
-            temp = temp.next
-        temp.next=newNode
-    def deletefirst(self):
-        if self.start==None:
-            print("Linkrd list is empty so can not delete")
+    def insertAtLast(self, data):
+        if not self.head:
+            self.head = Node(data)
+        elif not self.head.next:
+            self.head.next = Node(data)
         else:
-           temp = self.start
-           self.start=self.start.next
-    def view(self):
-        if self.start==None:
-           print("Linked list is empty")
+            cur_node = self.head
+            while cur_node.next:
+                cur_node = cur_node.next
+            cur_node.next = Node(data)
+
+    def deleteAtLast(self):
+        if not self.head:
+            print("linked list is empty")
+        elif not self.head.next:
+            self.head = None
         else:
-           temp = self.start
-           while temp!=None:
-             print(temp.data,end=" ")
-             temp=temp.next
-mylist = LinkedList()
-mylist.view()
-mylist.deletefirst()
-mylist.insertlast()
-mylist.insertlast()
-mylist.insertlast()
-mylist.view()
-mylist.deletefirst()
-mylist.deletefirst()
-mylist.deletefirst()
-print()
-mylist.view()
+            cur_node = self.head
+            while cur_node.next.next:
+                cur_node = cur_node.next
+            cur_node.next = None
+
+    def insertAtFirst(self, data):
+        if self.head:
+            self.head = Node(data, self.head)
+        else:
+            self.head = Node(data)
+
+    def deleteAtFirst(self):
+        if not self.head:
+            print("linked list is empty")
+        elif not self.head.next:
+            self.head = None
+        else:
+            self.head = self.head.next
+
+    def __repr__(self):
+        if not self.head:
+            return "linked list is empty"
+        else:
+            iter = self.head
+            print_str = ""
+            while iter:
+                print_str = print_str+str(iter.data)+"-->"
+                iter = iter.next
+            return print_str
+
+
+if __name__ == '__main__':
+    list_obj = LinkedList()
+    list_obj.insertAtFirst(1)
+    list_obj.deleteAtFirst()
+    list_obj.insertAtLast(2)
+    list_obj.deleteAtLast()
+    print(list_obj)

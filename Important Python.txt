@@ -196,6 +196,12 @@ OS Module:
 	Size of file --> os.path.getsize(path) ==> size of file
 
 Request Module:
+	GET request ==> response  = requests.get(URL/Path, params={key:value,key2:value2}, auth= ("user","password), timeout = 3)
+	POST request ==> response  = requests.post(URL/Path, data={key:value,key2:value2}, auth= ("user","password), timeout = 3)
+	PUT request ==> response  = requests.put(URL/Path, data={key:value,key2:value2}, auth= ("user","password)), timeout = 3)
+	status code ==> response.status 
+	header ==> response.headers
+	get data dictionary from response json ==> response.json()
 	
 
 -------------------------------------------------------------------------------
