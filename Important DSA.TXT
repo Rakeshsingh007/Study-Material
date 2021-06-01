@@ -87,14 +87,11 @@ class Stack:
         if len(self.__stack) > 0:
             return self.__stack.pop()
         else:
-            return "queue is empty!!!!"
-
-    def show(self):
-        for item in self.__stack:
-            print(item, end="-->")
+            return "stack is empty!!!!"
 
     def __str__(self):
-        return "this is queue"
+        for item in self.__stack:
+            print(item, end="-->")
 
 -----------------------------------------------------------------------------------
 								Queue
@@ -113,12 +110,9 @@ class Queue:
         else:
             return "queue is empty!!!!"
 
-    def show(self):
+    def __str__(self):
         for item in self.__queue:
             print(item, end="-->")
-
-    def __str__(self):
-        return "this is queue"
 
 -----------------------------------------------------------------------------------
 								LinkedList
@@ -175,7 +169,6 @@ class LinkedList:
             return "linked list is empty"
         else:
             iter = self.head
-            print_str = ""
             while iter:
                 print_str = print_str+str(iter.data)+"-->"
                 iter = iter.next

@@ -2,7 +2,7 @@ difference bw python 2 and 3 and which version you are using and why
 range vs xrange
 input vs raw_input
 how python script runs and .pyc file
-precedence order of execution
+precedence order of execution ==> PEMDAS   --- P  Parentheses, E  Exponents, MD  Multiplication and division, left to right, AS  Addition and subtraction, left to right
 Python memory management
 Namespaces and Scope
 max = 5<4 and 5 or 4  # turnery operator
