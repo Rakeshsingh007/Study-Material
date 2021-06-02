@@ -182,3 +182,77 @@ if __name__ == '__main__':
     list_obj.insertAtLast(2)
     list_obj.deleteAtLast()
     print(list_obj)
+	
+-----------------------------------------------------------------------------------
+								Tree
+-----------------------------------------------------------------------------------
+class tree:
+    def __init__(self,data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+    def add_child(self, data):
+        if self.data == data:
+            return
+        if self.data > data:
+            if self.left:
+                self.left.add_child(data)
+            else:
+                self.left = tree(data)
+        else:
+            if self.right:
+                self.right.add_child(data)
+            else:
+                self.right = tree(data)
+
+    def in_order_traversal(self):
+        output_list = list()
+        # left tree travers
+        if self.left:
+            output_list += self.left.in_order_traversal()
+
+        output_list.append(self.data)
+
+        if self.right:
+            output_list += self.right.in_order_traversal()
+        return output_list
+
+    def search(self, elem):
+        if self.data == elem:
+            return True
+        if self.data>elem:
+            if self.left:
+                return self.left.search(elem)
+            else:
+                return False
+        else:
+            if self.right:
+                return self.right.search(elem)
+            else:
+                return False
+
+    def min(self):
+        cur_node = self
+        while cur_node.left:
+            cur_node = cur_node.left
+        return cur_node.data
+
+    def max(self):
+        cur_node = self
+        while cur_node.right:
+            cur_node = cur_node.right
+        return cur_node.data
+
+if __name__ == "__main__":
+    def create_tree(list_elem):
+        root = tree(1)
+        for item in list_elem:
+            root.add_child(item)
+        return root
+
+    obj = create_tree([1,2,3,4,5,6,1,4,24])
+    print(obj.in_order_traversal())
+    print(obj.search(34))
+    print(obj.min())
+    print(obj.max())
