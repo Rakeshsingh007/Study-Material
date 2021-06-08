@@ -312,8 +312,13 @@ sub() and split() and group()
 ^       - Beginning of a String
 $       - End of a String
 
+\A<str> - strting with given str (like match)
+
+
 []      - Matches Characters in brackets
+[a-zA-Z] - Matches from these character range single word
 [^ ]    - Matches Characters NOT in brackets
+[^a-zA-Z] - Not Matches from these character range single word
 |       - Either Or
 ( )     - Group
 
