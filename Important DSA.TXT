@@ -28,7 +28,7 @@ Average case for a random array: Θ(log n)
 -----------------------------------------------------------------------------------
 
 def InsertionSort(list):
-    for index in range(1,len(list)):
+    for  in range(1,len(list)):
         while list[index]<list[index-1] and index>0:
             list[index],list[index-1]=list[index-1],list[index]
             index=index-1
@@ -47,10 +47,10 @@ Average case for a random array: Θ(n2)
 
 def BubbleSort(list):
 	flag = False
-	for i in range(len(list) - 1):
-		for j in range(len(list) - 1 - i):
-			if list[j]>list[j+1]:
-				list[j],list[j + 1] =list[j+1],list[j]
+	for index in range(len(list) - 1):
+		for sub_index in range(len(list) - 1 - index):
+			if list[sub_index]>list[sub_index+1]:
+				list[sub_index],list[sub_index + 1] =list[sub_index+1],list[sub_index]
 				flag = True
 		if not flag:
 			break
@@ -62,13 +62,13 @@ print(BubbleSort([1,12,3,4,5]))
 -----------------------------------------------------------------------------------
 
 def SelectionSort(list):
-	for i in range(len(list)-1):
-		minindex = i
-		for j in range(i+1,len(list)):
-			if list[j]<list[minindex]:
-				minindex=j
-		if minindex!=i:
-			list[i],list[minindex]=list[minindex],list[i]
+	for index in range(len(list)-1):
+		minindex = index
+		for sub_index in range(index+1,len(list)):
+			if list[sub_index]<list[minindex]:
+				minindex=sub_index
+		if minindex!=index:
+			list[index],list[minindex]=list[minindex],list[index]
 	return list
 print(SelectionSort([1,2,4,1,3,5,32,3,4,2]))
 
