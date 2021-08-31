@@ -312,7 +312,7 @@ sub() and split() and group()
 ^       - Beginning of a String
 $       - End of a String
 
-\A<str> - strting with given str (like match)
+\A<str> - starting with given str (like match)
 
 
 []      - Matches Characters in brackets
