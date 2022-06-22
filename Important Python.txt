@@ -1,0 +1,335 @@
+difference bw python 2 and 3 and which version you are using and why
+range vs xrange
+input vs raw_input
+how python script runs and .pyc file
+precedence order of execution ==> PEMDAS   --- P  Parentheses, E  Exponents, MD  Multiplication and division, left to right, AS  Addition and subtraction, left to right
+Python memory management
+Namespaces and Scope
+max = 5<4 and 5 or 4  # turnery operator
+max = 5 if 5<4 else 4 # turnery operator
+swapping = a,b = b,a  
+Inplace operator ==> a = a+b and it will return a+b and store it in a seperate variable a+=b will store in a itself
+-------------------------------------------------------------------------------
+							      DataTypes
+-------------------------------------------------------------------------------
+Property | Data Structure					  string   List	  	  Tuple	  	  Dict	  	  Set
+
+Mutable										  No        Yes		  No		  Yes		  Yes
+Ordered										  yes       Yes		  Yes		  No		  No
+Sortable									  No        Yes		  No		  No		  No
+Reversible									  No        Yes		  No		  No		  No
+Slice-able [ : ]							  Yes       Yes		  Yes		  No		  No
+Comprehensions								  No        Yes		  No		  Yes		  Yes
+Accessible using index operators [ ]		  yes       Yes		  Yes		  No	      No
+Merging using + operator					  Yes       Yes		  Yes		  No		  No
+-------------------------------------------------------------------------------
+							      String
+-------------------------------------------------------------------------------
+byte object and str object
+encode and decode
+slicing concepts
+String can be concatenate like this => "adb" "rty"
+-------------------------------------------------------------------------------
+							      List
+-------------------------------------------------------------------------------
+List basic operations like pop del remove insert append extend sort reverse sorted reversed  +,*, in, not in 
+difference between append and extend
+x = [x if x%2 == 0 else None for x in range(4)] #list comprehension
+
+pop = Remove and return item at index (default last). Raises IndexError if list is empty or index is out of range.
+remove = Remove first occurrence of value. Raises ValueError if the value is not present. return None
+insert = Insert object before index  ==>> list.insert(index, element) 
+append = Append object to the end of the list
+extend = Extend list by appending elements from the iterable.it must be itrabele
+-------------------------------------------------------------------------------
+							      Tuple
+-------------------------------------------------------------------------------
+Tuple basic operations like + ,count(),index()
+why tuple is faster than list  ===>>>(Tuples are stored in a single block of memory. Tuples are immutalbe,It doesn't require extraspace to store new objects. Lists are allocated in two blocks: the fixed one with all the Python object information and a variable sized block for the data.It is the reason creating a tuple is faster than List)
+Tuple comprehension: do not exist
+-------------------------------------------------------------------------------
+							      Set
+-------------------------------------------------------------------------------
+In set only unmutable data(string,tuple,integer,floating number,frozenset) we can use as element.
+set => issubset() or <= & issuperset() or >= , if both are same then both function will return TRUE as "Any set is a subset of itself"
+
+x = {x if x%2 == 0 else None for x in range(4)} #set comprehension
+frozenset concept
+Multi set concept ==> It will track how many occurancee of unique element are there if updateing with some duplicate decode
+	from collections import Counter
+	inventry = Counter()
+	inventry.update({1,2,3,4,5,1,2,3}) #to update or add
+	inventry.most_common()[0] #to get most repeated pair
+
+Methods supported by SETS       	Methods supported by FROZENSETS				Example
+x = {1, 2, 3, 4, 5, 6, 7, 8}
+y = {4, 5, 6, 7, 8,9,10}
+add()
+clear()
+copy()                          	copy()
+difference()  -                 	difference()								x.difference(y) => {1, 2, 3}
+difference_update()	-=															x.difference_update(y) => x = {1, 2, 3}
+discard()																		x.discard(1) => x = {2, 3} (Not rasied error)
+intersection()  &               	intersection()								x.intersection(y) => {4, 5, 6, 7, 8}
+intersection_update()  &=														x.intersection_update(y) => x = {4, 5, 6, 7, 8}
+isdisjoint()                    	isdisjoint()                                If anything is common b/w two set then will return False
+issubset()  <=                  	issubset()									x completlty present in y or not return True and False
+issuperset()  >=                	issuperset()								in y completlty present in x or not return True and False
+pop()																			pop from left side and raise key error if empty set
+remove()																		same like discard but will raise key Error if element not there or set is empty
+symmetric_difference()  ^       	symmetric_difference()						x.symmetric_difference(y) => {1, 2, 3, 9, 10}
+symmetric_difference_update()  ^=												x.symmetric_difference_update(y) => {1, 2, 3, 9, 10}
+union()  |                      	union()										x.union(y) => {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+update()																		same as union but will as inplace operator
+-------------------------------------------------------------------------------
+							      Dictionary
+-------------------------------------------------------------------------------
+Dictionary comprehension ==> x = {x:x if x%2 == 0 else None for x in range(4)}
+x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+
+Methods supported by Dictionary     Example
+
+clear()
+copy()                          	
+items()                  			List of tuple of key,value pair
+keys()	                            key_discriptor ==> dict_keys([1, 3, 4, 2, 0])
+values()	                        values_discriptor ==> dict_values([2, 4, 3, 1, 0])
+fromkeys()							Takes an iterator to make new dictionary from it ==> x.fromkeys([11,22,33,44], "default_value")
+get()                            	get the value of key .if no key then will not raise any error ==> x.get(1) => 2
+pop()								pop the value of key and return it .if no key then will raise keyerror ==> x.pop(1) => 2
+popitem()                    		The popitem() doesn't take any parameters,returns an arbitrary element (key, value) ==> x.popitem() => (1,2)
+setdefault()                    	check for key in dictionary and if not there then will update the dictionary with that kay and provided value(default=None).
+
+#Sort a Python dictionary by key
+	1:
+	sorted(x.items(), key=lambda kv: kv[0])
+	2:
+	from collections import OrderedDict
+	dict = {'ravi':'10','rajnish':'9','sanjeev':'15','yash':'2','suraj':'32'}
+	dict1 = OrderedDict(sorted(dict.items()))
+
+#Sort a Python dictionary by Value
+	sorted_x = sorted(x.items(), key=lambda kv: kv[1])
+
+#maximum and minimum value of a Python dictionary
+key_max = max(x.keys(), key=(lambda k: x[k]))
+key_min = min(x.keys(), key=(lambda k: x[k]))
+-------------------------------------------------------------------------------
+							  OOPS    
+------------------------------------------------------------------------------- 
+polymorphism
+encapsulation ==> myObject._MyClass__hiddenVariable
+inheritance ==>>Multilevel,Multiple and MRO concept
+Class and instance variable
+class ,static and static methods
+method overriding
+operator overloading using magic method
+class object structure
+constructor  
+destructor 
+issubclass and super
+@property setter getter deleter property()
+new, init, magic fun
+** Method Overloading in python not possible
+** class variable can be access and modified using insance as well but it will create same variable in instance namespace ==> refer corey video 2
+** class method can be called from instance as well and method will be applied to not only that instance but all instance of that class because we are using cls keyword in method ==> refer corey video 3
+-------------------------------------------------------------------------------
+							      Others
+------------------------------------------------------------------------------- 
+enumerate,zip,sorted,reversed,join,split
+__name__ variable and used cases
+args and kwargs and packing unpacking of arguments
+
+deepcopy,shallow copy and object assignment(=) refer this https://stackoverflow.com/questions/17246693/what-is-the-difference-between-shallow-copy-deepcopy-and-normal-assignment-oper
+	A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original.
+	A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original.
+	Example:
+		import copy
+
+		a = [1, 2, 3]
+		b = [4, 5, 6]
+		c = [a, b]
+
+		d = c
+
+		print(id(c) == id(d))         # True - d is the same object as c
+		print(id(c[0]) == id(d[0]))   # True - d[0] is the same object as c[0]
+
+		d = copy.copy(c)
+
+		print(id(c) == id(d))         # False - d is now a new object
+		print(id(c[0]) == id(d[0]))   # True - d[0] is the same object as c[0]
+
+		d = copy.deepcopy(c)
+
+		print(id(c) == id(d))         # False - d is now a new object
+		print(id(c[0]) == id(d[0]))   # False - d[0] is now a new object
+
+Difference between ==,isintance and is operator in Python ==> The “==” operator compares the value or equality of two objects, whereas the Python “is” operator checks whether two variables point to the same object in memory.
+-------------------------------------------------------------------------------
+							 Most important
+------------------------------------------------------------------------------- 
+lambda filter map reduce
+iterator
+generator
+x = (x for x in range(4)) #generator comprehension
+yield keyword
+Partial function
+first class function
+Clousers
+Decorator
+-------------------------------------------------------------------------------
+							 Modules and Packages 
+------------------------------------------------------------------------------- 
+Diffrence between modules and packages
+'__all__' in __init__.py while packages initilization
+
+OS Module:
+	Current working directory   ---> os.getcwd()
+	Lising of file in directory ---> os.listdir()
+	Make directory --> os.mkdir(path) ==> create a directory named path with the specified numeric mode. This method raise FileExistsError if the directory already exists.
+	Make directory recursively --> os.mkdir(path) ==> while making leaf directory if any intermediate-level directory is missing, will create them all
+	Rename file  ---> os.rename('old.txt','New.txt')
+	Delete a file --> os.remove(path) ==> remove or delete a file path. This method can not remove or delete a directory
+    Delete a empty directory --> os.rmdir(path) ==> remove or delete a empty directory
+	Path checking --> os.path.exists(path) ==> check whether a file exists or not 
+	Size of file --> os.path.getsize(path) ==> size of file
+
+Request Module:
+	GET request ==> response  = requests.get(URL/Path, params={key:value,key2:value2}, auth= ("user","password), timeout = 3)
+	POST request ==> response  = requests.post(URL/Path, data={key:value,key2:value2}, auth= ("user","password), timeout = 3)
+	PUT request ==> response  = requests.put(URL/Path, data={key:value,key2:value2}, auth= ("user","password)), timeout = 3)
+	status code ==> response.status 
+	header ==> response.headers
+	get data dictionary from response json ==> response.json()
+	
+
+-------------------------------------------------------------------------------
+							 Exception Handling  
+------------------------------------------------------------------------------- 
+Error vs Exception
+Exception Handling
+custom exception:
+	class MyException(Exception):
+		def __int__(self,value)
+			self.value = value
+		def __str__(self):
+			return self.value
+
+	try:
+		raise (MyException("this is messagge"))
+
+	except MyException as error:
+		print(error.args[0])
+		
+-------------------------------------------------------------------------------
+							 File Handling  
+------------------------------------------------------------------------------- 
+
+buffer
+close -- Close the file
+closed -- True/False based on file open/close
+encoding -- encodeing  
+flush -- will flush the file obj(i.e will not able to read again from same obj again, need to create new object)  
+mode  --- in which mode file is opened
+name -- name of file 
+
+readable -- True/False based on file can be read or not
+read -- read(n) read and return string till the end of file, if argument passed then will read that many characters
+readline -- readline(n) read and return string till the end of line, if argument passed then will read that many characters
+readlines --- readlines(n) read and return list of  string till the end of line, if argument passed of bytes returned exceed the hint number, no more lines will be returned.
+
+seek -- seek(int,whence = 0) -> int ==> Move the cursor to the given position and whence is optional and defaults to 0 which means absolute file positioning, other values are 1 which means seek relative to the current position and 2 means seek relative to the file's end.
+seekable -- The seekable() method returns True if the file is seekable, False if not
+tell -- tell() method returns current position of file object.
+truncate -- The truncate() method resizes the file to the given number of bytes. If the size is not specified, the current position will be used.
+
+writable -- True/False based on file can be write or not
+write -- write(str) -> int ==>  Takes str and write into file and return how many character write into file
+writelines -- writelines(iterable) ==>  Takes iterable and write into file and return None
+
+1	r     Opens a file for reading only in text format. The file pointer is placed at the beginning of the file. This is the default mode.
+2	rb    Opens a file for reading only in binary format. The file pointer is placed at the beginning of the file. This is the default mode.
+3	r+    Opens a file for both reading and writing in text format. The file pointer placed at the beginning of the file.
+4	rb+   Opens a file for both reading and writing in binary format. The file pointer placed at the beginning of the file.
+5	w     Opens a file for writing only in text format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+6	wb    Opens a file for writing only in binary format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+7	w+    Opens a file for both writing and reading in text format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+8	wb+   Opens a file for both writing and reading in binary format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+9	a     Opens a file for appending in text format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+10	ab    Opens a file for appending in binary format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+11	a+    Opens a file for both appending and reading in text format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+12	ab+   Opens a file for both appending and reading in binary format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+
+Custom Context Manager:
+
+	class my_file_reader():
+		def __init__(self, file_path):
+			self.__path = file_path
+			self.__file_object = None
+
+		def __enter__(self):
+			self.__file_object = open(self.__path)
+			return self
+
+		def __exit__(self, type, val, tb):
+			self.__file_object.close()
+-------------------------------------------------------------------------------
+							  Python Collections   
+------------------------------------------------------------------------------- 
+Counters
+OrderedDict
+TypedDict
+Defaultdict
+ChainMap
+NamedTuple
+DeQue
+Heap
+Collections.UserDict
+Collections.UserList
+Collections.UserString
+
+-------------------------------------------------------------------------------
+							  REGULAR EXPRESSION  
+------------------------------------------------------------------------------- 
+Python re module
+re.match() vs re.search() vs re.findall()
+sub() and split() and group() 
+
+
+. + * ? [] $ ^ () {} | \ escape required
+
+.       - Any Character Except New Line
+\d      - Digit (0-9)
+\D      - Not a Digit (0-9)
+\w      - Word Character (a-z, A-Z, 0-9, _)
+\W      - Not a Word Character
+\s      - Whitespace (space, tab, newline)
+\S      - Not Whitespace (space, tab, newline)
+
+\b      - Word Boundary
+\B      - Not a Word Boundary
+^       - Beginning of a String
+$       - End of a String
+
+\A<str> - starting with given str (like match)
+
+
+[]      - Matches Characters in brackets
+[a-zA-Z] - Matches from these character range single word
+[^ ]    - Matches Characters NOT in brackets
+[^a-zA-Z] - Not Matches from these character range single word
+|       - Either Or
+( )     - Group
+
+Quantifiers:
+*       - 0 or More
++       - 1 or More
+?       - 0 or One
+{3}     - Exact Number
+{3,4}   - Range of Numbers (Minimum, Maximum)
+
+
+#### Sample Regexs ####
+
+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
